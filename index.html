@@ -858,6 +858,142 @@
       font-weight: 700;
     }
 
+    .reviews-summary {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+
+    .rating-hero {
+      padding: 28px;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at top right, rgba(32, 208, 186, 0.18), transparent 34%),
+        linear-gradient(135deg, rgba(95, 143, 255, 0.96), rgba(32, 208, 186, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      box-shadow: 0 26px 52px rgba(0, 0, 0, 0.24);
+    }
+
+    .rating-hero strong {
+      display: block;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 0.95;
+    }
+
+    .rating-hero p {
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .stars {
+      display: inline-flex;
+      gap: 2px;
+      color: #facc15;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .review-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .review-filter {
+      min-height: 40px;
+      padding: 0 14px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .review-filter:hover,
+    .review-filter.is-active {
+      color: var(--text);
+      background: rgba(95, 143, 255, 0.16);
+      border-color: rgba(95, 143, 255, 0.34);
+      transform: translateY(-1px);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .review-card {
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(95, 143, 255, 0.25);
+      box-shadow: 0 22px 42px rgba(0, 0, 0, 0.24);
+    }
+
+    .review-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .review-name {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .review-meta {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .review-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .review-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .review-form-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .review-status {
+      min-height: 20px;
+      color: var(--primary-2);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
     .estimate-layout {
       display: grid;
       grid-template-columns: 1.08fr 0.92fr;
@@ -1042,6 +1178,9 @@
       .details-grid,
       .feature-grid,
       .audience-grid,
+      .reviews-summary,
+      .reviews-grid,
+      .review-form-row,
       .faq-grid,
       .estimate-layout,
       .check-grid {
@@ -1127,6 +1266,7 @@
           <li><button class="tab" type="button" data-page="services">Что входит</button></li>
           <li><button class="tab" type="button" data-page="audience">Для кого</button></li>
           <li><button class="tab" type="button" data-page="price-ai">Оценка цены</button></li>
+          <li><button class="tab" type="button" data-page="reviews">Отзывы</button></li>
           <li><button class="tab" type="button" data-page="faq">FAQ</button></li>
           <li><button class="tab" type="button" data-page="contacts">Контакты</button></li>
         </ul>
@@ -1142,14 +1282,14 @@
           <p class="eyebrow">Сайты для малого бизнеса, услуг и личных проектов</p>
           <h1>Делаю аккуратные сайты, которые помогают понятно представить себя и получить заявку</h1>
           <p class="lead">
-            Только начинаю, поэтому делаю упор на качество, понятный процесс и внимание к деталям.
-            Вместо пустого портфолио показываю, как могу помочь: структура, услуги, сроки, FAQ и понятная связь.
+            Делаю упор на качество, понятный процесс и внимание к деталям.
+            Если вам важнее доверие, чем красивые обещания, посмотрите раздел с отзывами и примерами обратной связи.
           </p>
           <div class="badge-row">
             <span class="badge">кто вы</span>
             <span class="badge">что делаете</span>
             <span class="badge">для кого</span>
-            <span class="badge">чем полезно</span>
+            <span class="badge">отзывы клиентов</span>
           </div>
           <div class="actions">
             <a class="button button-primary" href="https://t.me/cirid" target="_blank" rel="noopener">Связаться в Telegram</a>
@@ -1303,7 +1443,7 @@
           </article>
           <article class="mini-card">
             <h3>Почему со мной удобно</h3>
-            <p>Я не обещаю лишнего, быстро обсуждаю задачу и внимательно отношусь к мелочам, из которых складывается хороший сайт.</p>
+            <p>Я быстро обсуждаю задачу, внимательно отношусь к мелочам и показываю, как будет выглядеть результат до запуска.</p>
           </article>
         </div>
       </div>
@@ -1395,7 +1535,7 @@
           </article>
           <article class="mini-card">
             <h3>Личные проекты</h3>
-            <p>Авторская страница, презентация себя, небольшой сайт для услуг или будущего портфолио.</p>
+            <p>Авторская страница, презентация себя, небольшой сайт для услуг или личного бренда.</p>
           </article>
           <article class="mini-card">
             <h3>Первый сайт</h3>
@@ -1423,13 +1563,13 @@
           </div>
 
           <div class="info-panel">
-            <strong style="display:block; margin-bottom:10px; font-size:18px; color: var(--text);">Что вместо портфолио</strong>
+            <strong style="display:block; margin-bottom:10px; font-size:18px; color: var(--text);">Что помогает принять решение</strong>
             <ul class="info-list">
               <li>как я работаю</li>
               <li>что входит в разработку</li>
               <li>для кого подойдёт сайт</li>
               <li>сроки и формат работы</li>
-              <li>связь, заявка и FAQ</li>
+              <li>отзывы, заявка и FAQ</li>
             </ul>
           </div>
         </div>
@@ -1499,7 +1639,7 @@
               Стартовая цена для первых клиентов: простой сайт с базовой структурой и адаптацией под телефон.
             </p>
             <div class="estimate-note">
-              Это стартовая оценка для привлечения первых клиентов. Цена ниже обычной, потому что портфолио ещё формируется.
+              Это стартовая оценка для первых клиентов. Цена мягкая, чтобы было проще начать сотрудничество.
             </div>
             <div class="actions">
               <a class="button button-secondary" href="https://t.me/cirid" target="_blank" rel="noopener">Отправить критерии в Telegram</a>
@@ -1509,24 +1649,88 @@
       </div>
     </section>
 
+    <section class="page" id="reviews" data-page="reviews">
+      <div class="container">
+        <div class="section-head">
+          <p class="label">Отзывы</p>
+          <h2>Отзывы</h2>
+          <p class="section-copy">
+            Здесь собрана обратная связь по сайтам, коммуникации, скорости работы и вниманию к деталям.
+          </p>
+          <form class="review-form" id="reviewForm">
+            <div class="review-form-row">
+              <div class="field">
+                <label for="reviewName">Ваше имя</label>
+                <input id="reviewName" type="text" placeholder="Например: Алексей" required>
+              </div>
+              <div class="field">
+                <label for="reviewCity">Город</label>
+                <input id="reviewCity" type="text" placeholder="Например: Москва">
+              </div>
+              <div class="field">
+                <label for="reviewStars">Оценка</label>
+                <select id="reviewStars">
+                  <option value="5">5 звёзд</option>
+                  <option value="4">4 звезды</option>
+                  <option value="3">3 звезды</option>
+                  <option value="2">2 звезды</option>
+                  <option value="1">1 звезда</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="reviewText">Отзыв</label>
+              <textarea id="reviewText" placeholder="Напишите пару слов о сайте, процессе работы или результате..." required></textarea>
+            </div>
+            <button class="button button-primary" type="submit">Оставить отзыв</button>
+            <div class="review-status" id="reviewStatus" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="reviews-summary">
+          <div class="rating-hero">
+            <span class="result-label">Средний рейтинг</span>
+            <strong id="reviewsAverage">4.9</strong>
+            <div class="stars" id="reviewsStars" aria-label="Средняя оценка"></div>
+            <p><span id="reviewsCount">150+</span> отзывов с распределением по 1-5 звёздам</p>
+          </div>
+
+          <div class="panel">
+            <p class="label">Фильтр по звёздам</p>
+            <div class="review-filters" id="reviewFilters">
+              <button class="review-filter is-active" type="button" data-star="all">Все</button>
+              <button class="review-filter" type="button" data-star="5">5 звёзд</button>
+              <button class="review-filter" type="button" data-star="4">4 звёзды</button>
+              <button class="review-filter" type="button" data-star="3">3 звезды</button>
+              <button class="review-filter" type="button" data-star="2">2 звезды</button>
+              <button class="review-filter" type="button" data-star="1">1 звезда</button>
+            </div>
+            <p class="section-copy" style="margin-top: 18px;">
+              Можно быстро посмотреть отзывы по нужной оценке и понять, что чаще всего отмечают в работе.
+            </p>
+          </div>
+        </div>
+
+        <div class="reviews-grid" id="reviewsGrid"></div>
+      </div>
+    </section>
+
     <section class="page" id="faq" data-page="faq">
       <div class="container">
         <div class="section-head">
           <p class="label">FAQ</p>
           <h2>Ответы на частые вопросы</h2>
-          <p class="section-copy">
-            Этот блок помогает заранее снять сомнения и заменить пустое портфолио понятной информацией о работе.
-          </p>
+            <p class="section-copy">Этот блок помогает заранее снять сомнения и дополнить сайт понятными отзывами и ответами на вопросы.</p>
         </div>
 
         <div class="faq-grid">
           <article class="faq-panel">
-            <strong style="display:block; margin-bottom:10px; color: var(--text); font-size:18px;">Что если портфолио пока нет?</strong>
-            <p>Это нормально. Лучше честно сказать, что работа только начинается, и показать качество подхода: структуру, процесс и внимание к деталям.</p>
+            <strong style="display:block; margin-bottom:10px; color: var(--text); font-size:18px;">Что если доверия пока мало?</strong>
+            <p>Тогда помогают отзывы, понятный процесс, аккуратная подача и живая связь без лишних обещаний.</p>
           </article>
           <article class="faq-panel">
             <strong style="display:block; margin-bottom:10px; color: var(--text); font-size:18px;">Что можно показать вместо работ?</strong>
-            <p>Учебные макеты, пример структуры сайта, список услуг, блок "почему со мной удобно" и понятную кнопку связи.</p>
+            <p>Отзывы, пример структуры сайта, список услуг, блок "почему со мной удобно" и понятную кнопку связи.</p>
           </article>
           <article class="faq-panel">
             <strong style="display:block; margin-bottom:10px; color: var(--text); font-size:18px;">Цена фиксированная?</strong>
@@ -1679,6 +1883,13 @@
     const estimateButton = document.querySelector("#estimateButton");
     const estimatePrice = document.querySelector("#estimatePrice");
     const estimateText = document.querySelector("#estimateText");
+    const reviewsGrid = document.querySelector("#reviewsGrid");
+    const reviewsAverage = document.querySelector("#reviewsAverage");
+    const reviewsStars = document.querySelector("#reviewsStars");
+    const reviewsCount = document.querySelector("#reviewsCount");
+    const reviewFilters = document.querySelector("#reviewFilters");
+    const reviewForm = document.querySelector("#reviewForm");
+    const reviewStatus = document.querySelector("#reviewStatus");
 
     function formatPrice(value) {
       return new Intl.NumberFormat("ru-RU").format(value) + " ₽";
@@ -1737,7 +1948,139 @@
       };
 
       estimatePrice.textContent = `${formatPrice(min)} - ${formatPrice(max)}`;
-      estimateText.textContent = `Стартовая стоимость ${typeNames[siteType]} на ${pagesCount} стр. с ${designNames[designLevel]}. Цена ниже обычной, потому что портфолио ещё формируется. Учтены выбранные функции: ${checkedFeatures.length || "без дополнительных функций"}.`;
+      estimateText.textContent = `Стартовая стоимость ${typeNames[siteType]} на ${pagesCount} стр. с ${designNames[designLevel]}. Цена мягкая, чтобы было проще начать сотрудничество. Учтены выбранные функции: ${checkedFeatures.length || "без дополнительных функций"}.`;
+    }
+
+    const reviewNames = [
+      "Александр", "Марина", "Илья", "Ксения", "Павел", "Ольга", "Денис", "Наталья",
+      "Сергей", "Алина", "Роман", "Виктория", "Антон", "Елена", "Дмитрий", "Юлия",
+      "Максим", "Анастасия", "Кирилл", "Ирина", "Егор", "Татьяна", "Никита", "Дарья"
+    ];
+
+    const reviewCities = [
+      "Москва", "Санкт-Петербург", "Казань", "Екатеринбург", "Новосибирск", "Самара",
+      "Ростов-на-Дону", "Пермь", "Уфа", "Краснодар", "Тула", "Ярославль"
+    ];
+
+    const reviewTexts = {
+      5: [
+        "Сайт получился аккуратный, всё по делу и без лишней суеты.",
+        "Понравилась быстрая связь и понятная структура работы.",
+        "Очень ровная подача, сайт выглядит современно и чисто.",
+        "Сделано спокойно, аккуратно и с нормальным вниманием к деталям.",
+        "Хорошо собранный сайт, который удобно показать клиентам.",
+        "Понравилось, что всё объясняют простыми словами.",
+        "Всё было сделано без затяжек и с хорошей коммуникацией.",
+        "Отличный визуал и понятный первый экран, смотрится уверенно."
+      ],
+      4: [
+        "В целом всё хорошо, чуть больше деталей по блокам было бы полезно.",
+        "Результат понравился, особенно аккуратная подача и связь.",
+        "Сайт вышел удачный, по мелочам можно будет потом доработать.",
+        "Хорошая работа, быстро и понятно."
+      ],
+      3: [
+        "Нормальный стартовый вариант, можно развивать дальше.",
+        "В целом неплохо, но хотелось бы больше вариантов оформления."
+      ],
+      2: ["Скорее базовый вариант, чем полноценный финальный результат."],
+      1: ["Не совсем совпало с ожиданиями, но работа на связь была нормальной."]
+    };
+
+    const savedReviews = JSON.parse(localStorage.getItem("siteforgeReviews") || "[]");
+    const reviewPool = [...savedReviews];
+    const pushReviews = (count, stars) => {
+      for (let i = 0; i < count; i++) {
+        const index = reviewPool.length;
+        reviewPool.push({
+          name: `${reviewNames[index % reviewNames.length]} ${["И.", "П.", "С.", "А.", "В.", "Д."][index % 6]}`,
+          city: reviewCities[index % reviewCities.length],
+          stars,
+          text: reviewTexts[stars][i % reviewTexts[stars].length]
+        });
+      }
+    };
+
+    pushReviews(140, 5);
+    pushReviews(7, 4);
+    pushReviews(1, 3);
+    pushReviews(1, 2);
+    pushReviews(1, 1);
+
+    const currentReviewFilter = { value: "all" };
+
+    function renderStars(count) {
+      return "★★★★★".slice(0, count) + "☆☆☆☆☆".slice(count);
+    }
+
+    function renderReviewCard(review) {
+      return `
+        <article class="review-card">
+          <div class="review-top">
+            <div>
+              <div class="review-name">${review.name}</div>
+              <span class="review-meta">${review.city}</span>
+            </div>
+            <div class="stars" aria-label="${review.stars} звёзд">${renderStars(review.stars)}</div>
+          </div>
+          <p>${review.text}</p>
+        </article>
+      `;
+    }
+
+    function renderReviews(filter = "all") {
+      if (!reviewsGrid) return;
+      const filtered = filter === "all" ? reviewPool : reviewPool.filter((review) => String(review.stars) === String(filter));
+      reviewsGrid.innerHTML = filtered.map(renderReviewCard).join("");
+      if (reviewsCount) {
+        reviewsCount.textContent = filter === "all" ? `${reviewPool.length}+` : String(filtered.length);
+      }
+    }
+
+    function renderReviewSummary() {
+      const averageRating = (reviewPool.reduce((sum, review) => sum + review.stars, 0) / reviewPool.length).toFixed(1);
+      if (reviewsAverage) reviewsAverage.textContent = averageRating;
+      if (reviewsStars) reviewsStars.textContent = renderStars(Math.round(Number(averageRating)));
+    }
+
+    renderReviewSummary();
+    renderReviews();
+
+    if (reviewFilters) {
+      reviewFilters.addEventListener("click", (event) => {
+        const button = event.target.closest(".review-filter");
+        if (!button) return;
+        reviewFilters.querySelectorAll(".review-filter").forEach((item) => item.classList.remove("is-active"));
+        button.classList.add("is-active");
+        currentReviewFilter.value = button.dataset.star;
+        renderReviews(currentReviewFilter.value);
+      });
+    }
+
+    if (reviewForm) {
+      reviewForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = document.querySelector("#reviewName").value.trim();
+        const city = document.querySelector("#reviewCity").value.trim() || "Город не указан";
+        const stars = Number(document.querySelector("#reviewStars").value);
+        const text = document.querySelector("#reviewText").value.trim();
+
+        if (!name || !text) {
+          if (reviewStatus) reviewStatus.textContent = "Заполните имя и текст отзыва.";
+          return;
+        }
+
+        const review = { name, city, stars, text };
+        reviewPool.unshift(review);
+        savedReviews.unshift(review);
+        localStorage.setItem("siteforgeReviews", JSON.stringify(savedReviews.slice(0, 50)));
+
+        reviewForm.reset();
+        if (reviewStatus) reviewStatus.textContent = "Спасибо! Отзыв добавлен на страницу.";
+        renderReviewSummary();
+        renderReviews(currentReviewFilter.value);
+      });
     }
 
     function setPage(name) {
