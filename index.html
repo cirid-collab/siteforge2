@@ -433,14 +433,15 @@
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 0.88fr;
+      grid-template-columns: minmax(0, 720px);
       gap: 18px;
       margin-top: 24px;
       align-items: stretch;
+      justify-content: center;
     }
 
     .contact-card {
-      padding: 28px;
+      padding: 22px;
       background:
         radial-gradient(circle at top right, rgba(20, 200, 180, 0.16), transparent 30%),
         linear-gradient(135deg, #2563ff, #14c8b4);
@@ -481,9 +482,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 18px 20px;
-      margin-top: 18px;
+      gap: 12px;
+      padding: 12px 14px;
+      margin-top: 14px;
       background: rgba(255, 255, 255, 0.08);
       color: var(--text);
       border-radius: var(--radius);
@@ -507,13 +508,13 @@
     .telegram strong {
       display: block;
       margin-top: 4px;
-      font-size: 28px;
+      font-size: 22px;
       line-height: 1;
     }
 
     .telegram .button-primary {
-      min-height: 56px;
-      padding-inline: 22px;
+      min-height: 44px;
+      padding-inline: 16px;
       font-size: 15px;
       box-shadow: 0 18px 34px rgba(29, 92, 255, 0.3);
     }
@@ -1448,6 +1449,7 @@
           </div>
           <div class="actions">
             <a class="button button-primary" href="https://t.me/cirid" target="_blank" rel="noopener">Связаться в Telegram</a>
+            <button class="button button-secondary" type="button" data-support-jump>Техподдержка</button>
             <button class="button button-secondary" type="button" data-page-jump="services">Что входит в сайт</button>
           </div>
         </div>
@@ -1903,10 +1905,10 @@
       <div class="container">
         <div class="section-head">
           <p class="label">Связь / заявка</p>
-          <h2>Стоимость договорная, связь через Telegram</h2>
+          <h2>Связь через Telegram и поддержку на сайте</h2>
           <p class="section-copy">
-            Итог зависит от объёма работы, количества страниц и сложности оформления.
-            Напишите нам, и мы быстро обсудим задачу, предложим формат и подскажем ориентир по цене.
+            Напишите в Telegram или оставьте обращение в личном разделе ниже.
+            Так будет проще сохранить историю заявки и вернуться к деталям позже.
           </p>
         </div>
 
@@ -1927,30 +1929,14 @@
             </a>
             <p class="footer-note">Быстрее всего отвечаем в Telegram.</p>
           </div>
-
-          <div class="price-box">
-            <div class="price">
-              <span class="eyebrow-mini">Цена</span>
-              <div class="offer">Сайт под ключ с аккуратной подачей и понятной структурой</div>
-              <strong>Договорная</strong>
-              <small>Обсуждаем бюджет после того, как поймём объём и задачу проекта.</small>
-            </div>
-
-            <div class="card">
-              <div class="icon">✓</div>
-              <h3>Что вы получите</h3>
-              <p>Понятный сайт, удобную навигацию, аккуратный стиль и готовую точку входа для клиентов.</p>
-            </div>
-          </div>
         </div>
 
-        <div class="support-panel">
+        <div class="support-panel" id="support">
           <div class="section-head">
             <p class="label">Техподдержка</p>
             <h2>Личный раздел для обращения по сайту</h2>
             <p class="section-copy">
               Зарегистрируйтесь или войдите, чтобы отправить критерии сайта и видеть историю своих обращений.
-              Сообщение не появляется на сайте: оно уходит владельцу через форму Netlify.
             </p>
           </div>
 
@@ -2125,6 +2111,7 @@
     const tabs = document.querySelectorAll(".tab");
     const pages = document.querySelectorAll(".page");
     const jumpButtons = document.querySelectorAll("[data-page-jump]");
+    const supportJumpButtons = document.querySelectorAll("[data-support-jump]");
     const pageLinks = document.querySelectorAll("[data-page-link]");
     const estimateForm = document.querySelector("#estimateForm");
     const estimateButton = document.querySelector("#estimateButton");
@@ -2598,6 +2585,15 @@
 
     jumpButtons.forEach((button) => {
       button.addEventListener("click", () => setPage(button.dataset.pageJump));
+    });
+
+    supportJumpButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setPage("contacts");
+        setTimeout(() => {
+          document.querySelector("#support")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 260);
+      });
     });
 
     pageLinks.forEach((link) => {
