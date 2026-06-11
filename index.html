@@ -6,16 +6,16 @@
   <title>SiteForge — разработка сайтов</title>
   <style>
     :root {
-      --bg: #0b1220;
-      --surface: #111a2b;
-      --surface-2: #162338;
-      --text: #eef4ff;
-      --muted: #a7b4c8;
-      --line: rgba(255, 255, 255, 0.08);
-      --primary: #5a8cff;
-      --primary-2: #23c7a2;
-      --shadow: 0 22px 50px rgba(0, 0, 0, 0.28);
-      --radius: 8px;
+      --bg: #f7fbff;
+      --surface: #ffffff;
+      --surface-2: #eef6ff;
+      --text: #102033;
+      --muted: #607086;
+      --line: rgba(16, 32, 51, 0.1);
+      --primary: #2563ff;
+      --primary-2: #14c8b4;
+      --shadow: 0 18px 44px rgba(26, 54, 93, 0.11);
+      --radius: 14px;
     }
 
     * {
@@ -32,8 +32,9 @@
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(90, 140, 255, 0.14), transparent 32%),
-        radial-gradient(circle at top right, rgba(35, 199, 162, 0.12), transparent 30%),
+        radial-gradient(circle at top left, rgba(37, 99, 255, 0.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(20, 200, 180, 0.16), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f7fbff 48%, #eef7ff 100%),
         var(--bg);
       line-height: 1.55;
       overflow-x: hidden;
@@ -57,9 +58,9 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      background: rgba(11, 18, 32, 0.9);
+      background: rgba(255, 255, 255, 0.86);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(16, 32, 51, 0.08);
       overflow-x: hidden;
     }
 
@@ -92,9 +93,9 @@
       height: 40px;
       display: block;
       overflow: hidden;
-      background: #0f1726;
+      background: #ffffff;
       border-radius: var(--radius);
-      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.26);
+      box-shadow: 0 12px 28px rgba(37, 99, 255, 0.18);
     }
 
     .brand-mark img {
@@ -157,8 +158,8 @@
 
     .tab:hover,
     .tab[aria-current="page"] {
-      color: #d9e7ff;
-      background: rgba(90, 140, 255, 0.14);
+      color: var(--primary);
+      background: rgba(37, 99, 255, 0.09);
     }
 
     .tab:hover::after,
@@ -259,7 +260,7 @@
     .process {
       margin-top: 28px;
       padding: 28px;
-      background: rgba(17, 26, 43, 0.88);
+      background: rgba(255, 255, 255, 0.88);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -280,9 +281,17 @@
       gap: 14px;
       padding: 20px;
       min-height: 100%;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #ffffff;
+      border: 1px solid rgba(16, 32, 51, 0.08);
       border-radius: var(--radius);
+      box-shadow: 0 14px 32px rgba(26, 54, 93, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .process-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(37, 99, 255, 0.22);
+      box-shadow: 0 22px 42px rgba(26, 54, 93, 0.13);
     }
 
     .process-card h3 {
@@ -298,8 +307,8 @@
       margin-top: auto;
       padding: 10px;
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(90, 140, 255, 0.08), rgba(35, 199, 162, 0.08));
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(37, 99, 255, 0.08), rgba(20, 200, 180, 0.08));
+      border: 1px solid rgba(37, 99, 255, 0.12);
     }
 
     .process-figure svg {
@@ -325,8 +334,9 @@
     .detail {
       padding: 18px;
       border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #ffffff;
+      border: 1px solid rgba(16, 32, 51, 0.08);
+      box-shadow: 0 12px 26px rgba(26, 54, 93, 0.07);
     }
 
     .detail strong {
@@ -373,11 +383,11 @@
       padding: 28px;
       background:
         radial-gradient(circle at top right, rgba(35, 199, 162, 0.12), transparent 34%),
-        linear-gradient(135deg, rgba(90, 140, 255, 0.96), rgba(34, 66, 215, 0.96));
+        linear-gradient(135deg, rgba(37, 99, 255, 0.96), rgba(20, 200, 180, 0.92));
       color: #fff;
       border-radius: var(--radius);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 26px 52px rgba(29, 92, 255, 0.32);
+      box-shadow: 0 26px 52px rgba(37, 99, 255, 0.24);
     }
 
     .price .eyebrow-mini {
@@ -414,7 +424,7 @@
     }
 
     .price-box .card {
-      background: rgba(255, 255, 255, 0.04);
+      background: #ffffff;
     }
 
     .contact-grid {
@@ -428,12 +438,12 @@
     .contact-card {
       padding: 28px;
       background:
-        radial-gradient(circle at top right, rgba(35, 199, 162, 0.12), transparent 28%),
-        linear-gradient(180deg, rgba(17, 26, 43, 0.96), rgba(15, 23, 38, 0.96));
+        radial-gradient(circle at top right, rgba(20, 200, 180, 0.16), transparent 30%),
+        linear-gradient(135deg, #2563ff, #14c8b4);
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius);
-      box-shadow: 0 26px 52px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 26px 52px rgba(37, 99, 255, 0.24);
     }
 
     .contact-card .section-copy {
@@ -470,16 +480,16 @@
       gap: 16px;
       padding: 18px 20px;
       margin-top: 18px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.92);
       color: var(--text);
       border-radius: var(--radius);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.46);
       transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
 
     .telegram:hover {
       transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.08);
+      background: #ffffff;
       border-color: rgba(35, 199, 162, 0.38);
     }
 
@@ -540,15 +550,17 @@
     }
 
     .button-secondary {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.03);
-      border-color: rgba(255, 255, 255, 0.1);
+      color: var(--primary);
+      background: #ffffff;
+      border-color: rgba(37, 99, 255, 0.16);
+      box-shadow: 0 12px 28px rgba(26, 54, 93, 0.08);
     }
 
     .site-footer {
       padding: 14px 0 18px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      color: rgba(238, 244, 255, 0.56);
+      border-top: 1px solid rgba(16, 32, 51, 0.08);
+      color: rgba(16, 32, 51, 0.58);
+      background: rgba(255, 255, 255, 0.72);
       font-size: 12px;
       line-height: 1.5;
       letter-spacing: 0;
@@ -569,13 +581,13 @@
       justify-content: center;
       width: 100%;
       padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(16, 32, 51, 0.08);
     }
 
     .footer-links button {
       border: 0;
       padding: 0;
-      color: rgba(238, 244, 255, 0.68);
+      color: rgba(37, 99, 255, 0.8);
       background: transparent;
       font-size: 12px;
       cursor: pointer;
@@ -588,7 +600,7 @@
     }
 
     .site-footer strong {
-      color: rgba(238, 244, 255, 0.84);
+      color: var(--text);
       font-weight: 600;
     }
 
@@ -625,6 +637,108 @@
       align-items: stretch;
     }
 
+    .hero-visual {
+      position: relative;
+      min-height: 100%;
+      padding: 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(20, 200, 180, 0.2), transparent 34%),
+        linear-gradient(135deg, #ffffff, #eef6ff);
+      border: 1px solid rgba(37, 99, 255, 0.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37, 99, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 255, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+      pointer-events: none;
+    }
+
+    .site-mockup {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+      min-height: 100%;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(37, 99, 255, 0.12);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 40px rgba(26, 54, 93, 0.12);
+    }
+
+    .mockup-top {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mockup-top span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .mockup-top span:nth-child(2) {
+      background: var(--primary-2);
+    }
+
+    .mockup-top span:nth-child(3) {
+      background: #f59e0b;
+    }
+
+    .mockup-hero {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(37, 99, 255, 0.94), rgba(20, 200, 180, 0.9));
+    }
+
+    .mockup-line {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .mockup-line.short {
+      width: 58%;
+    }
+
+    .mockup-line.long {
+      width: 86%;
+    }
+
+    .mockup-button {
+      width: 112px;
+      height: 34px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: #ffffff;
+    }
+
+    .mockup-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .mockup-card {
+      min-height: 72px;
+      border-radius: var(--radius);
+      background: #ffffff;
+      border: 1px solid rgba(37, 99, 255, 0.12);
+      box-shadow: 0 10px 24px rgba(26, 54, 93, 0.08);
+    }
+
     .hero-aside {
       display: grid;
       gap: 18px;
@@ -634,10 +748,19 @@
     .info-panel,
     .faq-panel {
       padding: 24px;
-      background: rgba(255, 255, 255, 0.04);
+      background: #ffffff;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero-note:hover,
+    .info-panel:hover,
+    .faq-panel:hover {
+      transform: translateY(-3px);
+      border-color: rgba(37, 99, 255, 0.2);
+      box-shadow: 0 22px 42px rgba(26, 54, 93, 0.13);
     }
 
     .hero-note strong {
@@ -695,10 +818,17 @@
 
     .mini-card {
       padding: 22px;
-      background: rgba(255, 255, 255, 0.04);
+      background: #ffffff;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .mini-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(20, 200, 180, 0.24);
+      box-shadow: 0 22px 42px rgba(26, 54, 93, 0.13);
     }
 
     .mini-card h3 {
@@ -721,9 +851,9 @@
     .badge {
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(90, 140, 255, 0.12);
-      color: #dce8ff;
-      border: 1px solid rgba(90, 140, 255, 0.2);
+      background: rgba(37, 99, 255, 0.09);
+      color: #1d4ed8;
+      border: 1px solid rgba(37, 99, 255, 0.16);
       font-size: 13px;
       font-weight: 700;
     }
@@ -760,8 +890,8 @@
       min-height: 48px;
       padding: 12px 14px;
       color: var(--text);
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #ffffff;
+      border: 1px solid rgba(16, 32, 51, 0.12);
       border-radius: var(--radius);
       outline: none;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -775,8 +905,8 @@
     .field input:focus,
     .field select:focus,
     .field textarea:focus {
-      border-color: rgba(90, 140, 255, 0.72);
-      box-shadow: 0 0 0 4px rgba(90, 140, 255, 0.12);
+      border-color: rgba(37, 99, 255, 0.72);
+      box-shadow: 0 0 0 4px rgba(37, 99, 255, 0.12);
     }
 
     .check-grid {
@@ -791,10 +921,16 @@
       align-items: flex-start;
       padding: 12px;
       color: var(--muted);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #ffffff;
+      border: 1px solid rgba(16, 32, 51, 0.1);
       border-radius: var(--radius);
       cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .check:hover {
+      background: rgba(37, 99, 255, 0.04);
+      border-color: rgba(37, 99, 255, 0.18);
     }
 
     .check input {
@@ -810,11 +946,11 @@
       padding: 28px;
       color: #fff;
       background:
-        radial-gradient(circle at top right, rgba(35, 199, 162, 0.16), transparent 34%),
-        linear-gradient(135deg, rgba(90, 140, 255, 0.96), rgba(34, 66, 215, 0.96));
+        radial-gradient(circle at top right, rgba(20, 200, 180, 0.18), transparent 34%),
+        linear-gradient(135deg, rgba(37, 99, 255, 0.96), rgba(20, 200, 180, 0.92));
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius);
-      box-shadow: 0 26px 52px rgba(29, 92, 255, 0.28);
+      box-shadow: 0 26px 52px rgba(37, 99, 255, 0.24);
     }
 
     .estimate-result .result-label {
@@ -860,6 +996,13 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(37, 99, 255, 0.2);
+      box-shadow: 0 22px 42px rgba(26, 54, 93, 0.13);
     }
 
     .icon {
@@ -994,7 +1137,8 @@
   <main>
     <section class="page is-active" id="home" data-page="home">
       <div class="container hero">
-        <div class="panel" style="max-width: 760px;">
+        <div class="hero-layout">
+        <div class="panel">
           <p class="eyebrow">Сайты для малого бизнеса, услуг и личных проектов</p>
           <h1>Делаю аккуратные сайты, которые помогают понятно представить себя и получить заявку</h1>
           <p class="lead">
@@ -1011,6 +1155,27 @@
             <a class="button button-primary" href="https://t.me/cirid" target="_blank" rel="noopener">Связаться в Telegram</a>
             <button class="button button-secondary" type="button" data-page-jump="services">Что входит в сайт</button>
           </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Яркий макет современного сайта">
+          <div class="site-mockup">
+            <div class="mockup-top" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="mockup-hero">
+              <div class="mockup-line long"></div>
+              <div class="mockup-line short"></div>
+              <div class="mockup-button"></div>
+            </div>
+            <div class="mockup-cards">
+              <div class="mockup-card"></div>
+              <div class="mockup-card"></div>
+              <div class="mockup-card"></div>
+            </div>
+          </div>
+        </div>
         </div>
 
         <div class="process">
@@ -1032,9 +1197,9 @@
               </div>
               <div class="process-figure">
                 <svg viewBox="0 0 320 180" role="img" aria-label="Бизнесмены обсуждают проект">
-                  <rect x="12" y="12" width="296" height="156" rx="16" fill="#0d1524" stroke="rgba(255,255,255,0.08)"/>
-                  <rect x="68" y="110" width="184" height="18" rx="9" fill="#162338"/>
-                  <rect x="104" y="96" width="112" height="16" rx="8" fill="#263650" stroke="rgba(255,255,255,0.12)"/>
+                  <rect x="12" y="12" width="296" height="156" rx="16" fill="#ffffff" stroke="rgba(37,99,255,0.14)"/>
+                  <rect x="68" y="110" width="184" height="18" rx="9" fill="#dbeafe"/>
+                  <rect x="104" y="96" width="112" height="16" rx="8" fill="#eef6ff" stroke="rgba(37,99,255,0.14)"/>
                   <g>
                     <animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="2.4s" repeatCount="indefinite"/>
                     <circle cx="91" cy="68" r="18" fill="#5a8cff"/>
@@ -1049,7 +1214,7 @@
                   </g>
                   <g>
                     <animateTransform attributeName="transform" type="translate" values="0 0;0 -5;0 0" dur="1.8s" repeatCount="indefinite"/>
-                    <rect x="126" y="36" width="68" height="38" rx="10" fill="rgba(255,255,255,0.06)" stroke="#23c7a2"/>
+                    <rect x="126" y="36" width="68" height="38" rx="10" fill="#f7fbff" stroke="#23c7a2"/>
                     <rect x="140" y="49" width="40" height="5" rx="2.5" fill="#d9e7ff"/>
                     <rect x="140" y="60" width="26" height="5" rx="2.5" fill="#a7b4c8"/>
                   </g>
@@ -1068,8 +1233,8 @@
               </div>
               <div class="process-figure">
                 <svg viewBox="0 0 320 180" role="img" aria-label="Бизнесмен собирает структуру сайта">
-                  <rect x="12" y="12" width="296" height="156" rx="16" fill="#0d1524" stroke="rgba(255,255,255,0.08)"/>
-                  <rect x="44" y="124" width="232" height="12" rx="6" fill="#162338"/>
+                  <rect x="12" y="12" width="296" height="156" rx="16" fill="#ffffff" stroke="rgba(37,99,255,0.14)"/>
+                  <rect x="44" y="124" width="232" height="12" rx="6" fill="#dbeafe"/>
                   <g>
                     <animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="2.2s" repeatCount="indefinite"/>
                     <circle cx="72" cy="74" r="15" fill="#5a8cff"/>
@@ -1079,13 +1244,13 @@
                   <g>
                     <rect x="132" y="92" width="54" height="34" rx="8" fill="rgba(90,140,255,0.18)" stroke="#5a8cff"/>
                     <rect x="190" y="70" width="54" height="56" rx="8" fill="rgba(35,199,162,0.16)" stroke="#23c7a2"/>
-                    <rect x="132" y="52" width="112" height="28" rx="8" fill="#162338" stroke="rgba(255,255,255,0.14)"/>
+                    <rect x="132" y="52" width="112" height="28" rx="8" fill="#eef6ff" stroke="rgba(37,99,255,0.14)"/>
                     <animateTransform attributeName="transform" type="translate" values="0 0;0 -2;0 0" dur="2.5s" repeatCount="indefinite"/>
                   </g>
                   <g>
                     <animateTransform attributeName="transform" type="translate" values="-18 -26;0 0;0 0" keyTimes="0;0.55;1" dur="2s" repeatCount="indefinite"/>
                     <rect x="110" y="68" width="50" height="30" rx="8" fill="#23c7a2"/>
-                    <rect x="121" y="80" width="28" height="4" rx="2" fill="#0d1524"/>
+                    <rect x="121" y="80" width="28" height="4" rx="2" fill="#102033"/>
                   </g>
                   <path d="M146 108h26M204 88h26M204 104h18M150 66h76" stroke="#d9e7ff" stroke-width="4" stroke-linecap="round"/>
                 </svg>
@@ -1100,13 +1265,13 @@
               </div>
               <div class="process-figure">
                 <svg viewBox="0 0 320 180" role="img" aria-label="Бизнесмен запускает сайт на компьютере">
-                  <rect x="12" y="12" width="296" height="156" rx="16" fill="#0d1524" stroke="rgba(255,255,255,0.08)"/>
+                  <rect x="12" y="12" width="296" height="156" rx="16" fill="#ffffff" stroke="rgba(37,99,255,0.14)"/>
                   <rect x="76" y="44" width="154" height="86" rx="12" fill="rgba(90,140,255,0.14)" stroke="#5a8cff"/>
                   <rect x="94" y="62" width="78" height="10" rx="5" fill="#d9e7ff"/>
                   <rect x="94" y="84" width="112" height="7" rx="3.5" fill="#a7b4c8"/>
                   <rect x="94" y="100" width="84" height="7" rx="3.5" fill="#a7b4c8"/>
-                  <rect x="130" y="130" width="46" height="10" rx="5" fill="#263650"/>
-                  <rect x="112" y="140" width="82" height="8" rx="4" fill="#162338"/>
+                  <rect x="130" y="130" width="46" height="10" rx="5" fill="#bfdbfe"/>
+                  <rect x="112" y="140" width="82" height="8" rx="4" fill="#dbeafe"/>
                   <g>
                     <animateTransform attributeName="transform" type="translate" values="0 0;0 -2;0 0" dur="2.3s" repeatCount="indefinite"/>
                     <circle cx="251" cy="72" r="15" fill="#23c7a2"/>
