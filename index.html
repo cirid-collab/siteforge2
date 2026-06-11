@@ -998,6 +998,117 @@
       font-weight: 700;
     }
 
+    .support-panel {
+      margin-top: 28px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .support-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 18px;
+      align-items: start;
+      margin-top: 20px;
+    }
+
+    .auth-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .auth-tab {
+      flex: 1;
+      min-height: 40px;
+      border: 0;
+      border-radius: 10px;
+      color: var(--muted);
+      background: transparent;
+      font-weight: 800;
+      cursor: pointer;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .auth-tab.is-active {
+      color: var(--text);
+      background: rgba(95, 143, 255, 0.18);
+    }
+
+    .support-form,
+    .auth-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .account-box {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 14px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .account-box strong {
+      color: var(--text);
+    }
+
+    .small-button {
+      min-height: 36px;
+      padding: 0 12px;
+      border: 1px solid rgba(95, 143, 255, 0.28);
+      border-radius: 10px;
+      color: var(--primary);
+      background: rgba(95, 143, 255, 0.08);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .support-status {
+      min-height: 20px;
+      color: var(--primary-2);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .history-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .history-item {
+      padding: 14px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-size: 14px;
+    }
+
+    .history-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
     .estimate-layout {
       display: grid;
       grid-template-columns: 1.08fr 0.92fr;
@@ -1185,6 +1296,7 @@
       .reviews-summary,
       .reviews-grid,
       .review-form-row,
+      .support-layout,
       .faq-grid,
       .estimate-layout,
       .check-grid {
@@ -1792,6 +1904,86 @@
             </div>
           </div>
         </div>
+
+        <div class="support-panel">
+          <div class="section-head">
+            <p class="label">Техподдержка</p>
+            <h2>Личный раздел для обращения по сайту</h2>
+            <p class="section-copy">
+              Зарегистрируйтесь или войдите, чтобы отправить критерии сайта и видеть историю своих обращений.
+              Сообщение не появляется на сайте: оно уходит владельцу через форму Netlify.
+            </p>
+          </div>
+
+          <div class="support-layout">
+            <div class="panel">
+              <div class="auth-tabs" aria-label="Вход и регистрация">
+                <button class="auth-tab is-active" type="button" data-auth-mode="login">Вход</button>
+                <button class="auth-tab" type="button" data-auth-mode="register">Регистрация</button>
+              </div>
+
+              <form class="auth-form" id="supportAuthForm">
+                <div class="field">
+                  <label for="supportLogin">Логин</label>
+                  <input id="supportLogin" type="text" autocomplete="username" placeholder="Например: client123" required>
+                </div>
+                <div class="field">
+                  <label for="supportPassword">Пароль</label>
+                  <input id="supportPassword" type="password" autocomplete="current-password" placeholder="Введите пароль" required>
+                </div>
+                <button class="button button-primary" type="submit" id="supportAuthButton">Войти</button>
+                <div class="support-status" id="supportAuthStatus" aria-live="polite"></div>
+              </form>
+            </div>
+
+            <div class="panel">
+              <div class="account-box is-hidden" id="supportAccountBox">
+                <div>Вы вошли как <strong id="supportAccountName"></strong></div>
+                <button class="small-button" type="button" id="supportLogout">Выйти</button>
+              </div>
+
+              <form class="support-form is-hidden" id="supportForm" name="siteforge-support" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="siteforge-support">
+                <input class="is-hidden" name="bot-field" autocomplete="off">
+                <input type="hidden" name="login" id="supportFormLogin">
+
+                <div class="field">
+                  <label for="supportName">Ваше имя</label>
+                  <input id="supportName" name="name" type="text" placeholder="Как к вам обращаться" required>
+                </div>
+
+                <div class="field">
+                  <label for="supportContact">Контакт для ответа</label>
+                  <input id="supportContact" name="contact" type="text" placeholder="Telegram, телефон или почта" required>
+                </div>
+
+                <div class="field">
+                  <label for="supportType">Тип обращения</label>
+                  <select id="supportType" name="requestType">
+                    <option value="Новый сайт">Новый сайт</option>
+                    <option value="Правки по сайту">Правки по сайту</option>
+                    <option value="Оценка стоимости">Оценка стоимости</option>
+                    <option value="Другой вопрос">Другой вопрос</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="supportMessage">Критерии и пожелания</label>
+                  <textarea id="supportMessage" name="message" placeholder="Опишите, какой сайт нужен, какие блоки должны быть, стиль, сроки и примеры..." required></textarea>
+                </div>
+
+                <button class="button button-primary" type="submit">Отправить в поддержку</button>
+                <div class="support-status" id="supportFormStatus" aria-live="polite"></div>
+              </form>
+
+              <div id="supportGuestNote">
+                <p class="section-copy">Войдите или создайте аккаунт, чтобы открыть форму обращения.</p>
+              </div>
+
+              <div class="history-list" id="supportHistory"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1831,11 +2023,11 @@
         <div class="faq-grid">
           <article class="faq-panel">
             <strong style="display:block; margin-bottom:10px; color: var(--text); font-size:18px;">Какие данные могут быть переданы</strong>
-            <p>Имя, контакт, описание проекта, примеры сайтов, пожелания по дизайну, срокам и функциональности.</p>
+            <p>Имя, контакт, логин личного раздела, описание проекта, примеры сайтов, пожелания по дизайну, срокам и функциональности.</p>
           </article>
           <article class="faq-panel">
             <strong style="display:block; margin-bottom:10px; color: var(--text); font-size:18px;">Для чего используются данные</strong>
-            <p>Только для обсуждения задачи, оценки стоимости, подготовки сайта и связи по проекту.</p>
+            <p>Только для обсуждения задачи, оценки стоимости, подготовки сайта, ответа через поддержку и связи по проекту.</p>
           </article>
         </div>
       </div>
@@ -1894,9 +2086,106 @@
     const reviewFilters = document.querySelector("#reviewFilters");
     const reviewForm = document.querySelector("#reviewForm");
     const reviewStatus = document.querySelector("#reviewStatus");
+    const supportAuthForm = document.querySelector("#supportAuthForm");
+    const supportAuthButton = document.querySelector("#supportAuthButton");
+    const supportAuthStatus = document.querySelector("#supportAuthStatus");
+    const supportAuthTabs = document.querySelectorAll("[data-auth-mode]");
+    const supportLogin = document.querySelector("#supportLogin");
+    const supportPassword = document.querySelector("#supportPassword");
+    const supportForm = document.querySelector("#supportForm");
+    const supportFormStatus = document.querySelector("#supportFormStatus");
+    const supportAccountBox = document.querySelector("#supportAccountBox");
+    const supportAccountName = document.querySelector("#supportAccountName");
+    const supportLogout = document.querySelector("#supportLogout");
+    const supportGuestNote = document.querySelector("#supportGuestNote");
+    const supportHistory = document.querySelector("#supportHistory");
+    const supportFormLogin = document.querySelector("#supportFormLogin");
+    const supportMode = { value: "login" };
 
     function formatPrice(value) {
       return new Intl.NumberFormat("ru-RU").format(value) + " ₽";
+    }
+
+    function getSupportUsers() {
+      return JSON.parse(localStorage.getItem("siteforgeSupportUsers") || "{}");
+    }
+
+    function saveSupportUsers(users) {
+      localStorage.setItem("siteforgeSupportUsers", JSON.stringify(users));
+    }
+
+    function getCurrentSupportLogin() {
+      return localStorage.getItem("siteforgeCurrentSupportLogin") || "";
+    }
+
+    function setCurrentSupportLogin(login) {
+      if (login) {
+        localStorage.setItem("siteforgeCurrentSupportLogin", login);
+      } else {
+        localStorage.removeItem("siteforgeCurrentSupportLogin");
+      }
+    }
+
+    async function hashPassword(password) {
+      if (!window.crypto || !crypto.subtle) {
+        let hash = 0;
+        for (let i = 0; i < password.length; i++) {
+          hash = ((hash << 5) - hash) + password.charCodeAt(i);
+          hash |= 0;
+        }
+        return `local-${hash}`;
+      }
+
+      const bytes = new TextEncoder().encode(password);
+      const digest = await crypto.subtle.digest("SHA-256", bytes);
+      return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
+    }
+
+    function renderSupportArea() {
+      if (!supportForm || !supportHistory) return;
+
+      const login = getCurrentSupportLogin();
+      const users = getSupportUsers();
+      const user = users[login];
+      const isLoggedIn = Boolean(login && user);
+
+      supportForm.classList.toggle("is-hidden", !isLoggedIn);
+      supportAccountBox.classList.toggle("is-hidden", !isLoggedIn);
+      supportGuestNote.classList.toggle("is-hidden", isLoggedIn);
+
+      if (supportAccountName) supportAccountName.textContent = login;
+      if (supportFormLogin) supportFormLogin.value = login;
+
+      if (!isLoggedIn) {
+        supportHistory.innerHTML = "";
+        return;
+      }
+
+      const requests = user.requests || [];
+      if (!requests.length) {
+        supportHistory.innerHTML = `
+          <div class="history-item">
+            <strong>История пока пустая</strong>
+            Здесь появятся ваши обращения после отправки формы.
+          </div>
+        `;
+        return;
+      }
+
+      supportHistory.innerHTML = requests.map((request) => `
+        <div class="history-item">
+          <strong>${request.type} · ${request.date}</strong>
+          <div>${request.message}</div>
+        </div>
+      `).join("");
+    }
+
+    function setAuthMode(mode) {
+      supportMode.value = mode;
+      supportAuthTabs.forEach((tab) => tab.classList.toggle("is-active", tab.dataset.authMode === mode));
+      if (supportAuthButton) supportAuthButton.textContent = mode === "login" ? "Войти" : "Создать аккаунт";
+      if (supportAuthStatus) supportAuthStatus.textContent = "";
+      if (supportPassword) supportPassword.setAttribute("autocomplete", mode === "login" ? "current-password" : "new-password");
     }
 
     function calculateEstimate() {
@@ -2087,6 +2376,112 @@
       });
     }
 
+    supportAuthTabs.forEach((tab) => {
+      tab.addEventListener("click", () => setAuthMode(tab.dataset.authMode));
+    });
+
+    if (supportAuthForm) {
+      supportAuthForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const login = supportLogin.value.trim();
+        const password = supportPassword.value;
+
+        if (!login || !password) {
+          if (supportAuthStatus) supportAuthStatus.textContent = "Введите логин и пароль.";
+          return;
+        }
+
+        const users = getSupportUsers();
+        const passwordHash = await hashPassword(password);
+
+        if (supportMode.value === "register") {
+          if (users[login]) {
+            if (supportAuthStatus) supportAuthStatus.textContent = "Такой логин уже занят. Попробуйте войти.";
+            return;
+          }
+
+          users[login] = { passwordHash, requests: [] };
+          saveSupportUsers(users);
+          setCurrentSupportLogin(login);
+          supportAuthForm.reset();
+          if (supportAuthStatus) supportAuthStatus.textContent = "Аккаунт создан. Теперь можно отправить обращение.";
+          renderSupportArea();
+          return;
+        }
+
+        if (!users[login] || users[login].passwordHash !== passwordHash) {
+          if (supportAuthStatus) supportAuthStatus.textContent = "Логин или пароль не подходит.";
+          return;
+        }
+
+        setCurrentSupportLogin(login);
+        supportAuthForm.reset();
+        if (supportAuthStatus) supportAuthStatus.textContent = "Вы вошли в личный раздел.";
+        renderSupportArea();
+      });
+    }
+
+    if (supportLogout) {
+      supportLogout.addEventListener("click", () => {
+        setCurrentSupportLogin("");
+        if (supportFormStatus) supportFormStatus.textContent = "";
+        renderSupportArea();
+      });
+    }
+
+    if (supportForm) {
+      supportForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const login = getCurrentSupportLogin();
+        const users = getSupportUsers();
+        const user = users[login];
+
+        if (!login || !user) {
+          if (supportFormStatus) supportFormStatus.textContent = "Сначала войдите или зарегистрируйтесь.";
+          return;
+        }
+
+        const formData = new FormData(supportForm);
+        formData.set("login", login);
+
+        const request = {
+          date: new Date().toLocaleString("ru-RU", { dateStyle: "short", timeStyle: "short" }),
+          type: formData.get("requestType"),
+          message: String(formData.get("message") || "").trim()
+        };
+
+        if (!request.message) {
+          if (supportFormStatus) supportFormStatus.textContent = "Опишите, что вам нужно.";
+          return;
+        }
+
+        user.requests = user.requests || [];
+        user.requests.unshift(request);
+        users[login] = user;
+        saveSupportUsers(users);
+        renderSupportArea();
+
+        const encoded = new URLSearchParams(formData).toString();
+
+        try {
+          await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encoded
+          });
+          if (supportFormStatus) supportFormStatus.textContent = "Обращение отправлено. История обновлена.";
+          supportForm.reset();
+          if (supportFormLogin) supportFormLogin.value = login;
+        } catch (error) {
+          if (supportFormStatus) {
+            supportFormStatus.textContent = "Обращение сохранено в истории. На опубликованном сайте Netlify отправит его владельцу.";
+          }
+        }
+      });
+    }
+
     function setPage(name) {
       pages.forEach((page) => {
         page.classList.toggle("is-active", page.dataset.page === name);
@@ -2126,6 +2521,8 @@
       estimateButton.addEventListener("click", calculateEstimate);
       calculateEstimate();
     }
+
+    renderSupportArea();
 
     const initial = location.hash.replace("#", "");
     if (initial && document.querySelector(`.page[data-page="${initial}"]`)) {
